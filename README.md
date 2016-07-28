@@ -1,3 +1,5 @@
+Minimales Beispiel-Projekt zu Vorführungszwecken
+
 # django-blog-example
 
 Abhängigkeiten installieren:
