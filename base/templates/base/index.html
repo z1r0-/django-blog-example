@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title %}Übersicht{% endblock %}
+
+{% block content %}
+<h2>Übersicht</h2>
+
+<ul>
+
+{% for post in posts %}
+    <li><a href="{% url "base:single" post.id %}">{{ post.title }}</a> von {{ post.user }} ({{ post.publish|date:"d.m.Y H:i:s" }})</li>
+{% endfor %}
+</ul>
+    {{ posts }}
+{% endblock %}

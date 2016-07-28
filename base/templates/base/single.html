@@ -1,0 +1,31 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<a href="{% url "base:index" %}">Zurück</a>
+<h2>{{ post.title }}</h2>
+<p>{{ post.user.username }}</p>
+<p>{{ post.content|safe }}</p>
+<br /><br />
+<form method="post" action="#">
+    {% csrf_token %}
+<table>
+    {{ form.as_table }}
+
+</table>
+<input type="submit" value="Abschicken" />
+</form>
+
+<br /><br />
+    <h2>Kommentare</h2>
+
+    <ul>
+    {% for comment in post.comments.all %}
+        <p>{{ comment.email }} {{ comment.homepage|default:"NA" }}</p>
+        <p>{{ comment.text }}</p>
+    {% empty %}
+        <p>Keine Kommentare vorhanden.</p>
+    {% endfor %}
+    </ul>
+{% endblock %}
